@@ -1,3 +1,5 @@
+const { createStore } = require("redux");
+
 // PASSOS:
 
 // 1- INITAL STATE
@@ -28,5 +30,7 @@ const removePostAction = (id) => {
 const postReducer = (state = initialState, action) => {};
 
 // 4- STORE
+
+const store = createStore(postReducer);
 
 // 5- DISPATCH
