@@ -1,0 +1,23 @@
+{
+  "name": "redux-2_redux-core_posts_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrunoAlz/REDUX-2_REDUX-CORE_POSTS_APP.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrunoAlz/REDUX-2_REDUX-CORE_POSTS_APP/issues"
+  },
+  "homepage": "https://github.com/BrunoAlz/REDUX-2_REDUX-CORE_POSTS_APP#readme",
+  "dependencies": {
+    "redux": "^4.2.0"
+  }
+}
