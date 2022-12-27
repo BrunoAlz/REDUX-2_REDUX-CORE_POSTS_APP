@@ -8,6 +8,21 @@ const initialState = {
 
 // 2- ACTIONS
 
+// ADD POSTS
+const addPostAction = (post) => {
+  return {
+    type: "ADD_POST",
+    payload: post,
+  };
+};
+
+// REMOVE POSTS
+const removePostAction = (id) => {
+  return {
+    type: "REMOVE_POST",
+  };
+};
+
 // 3- REDUCERS
 
 // 4- STORE
