@@ -25,6 +25,8 @@ const removePostAction = (id) => {
 
 // 3- REDUCERS
 
+const postReducer = (state = initialState, action) => {};
+
 // 4- STORE
 
 // 5- DISPATCH
