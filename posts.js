@@ -2,6 +2,10 @@
 
 // 1- INITAL STATE
 
+const initialState = {
+  posts: [],
+};
+
 // 2- ACTIONS
 
 // 3- REDUCERS
