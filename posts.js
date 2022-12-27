@@ -32,7 +32,7 @@ const postReducer = (state = initialState, action) => {
     return {
       // Pegamos o array de post que está no state e desestruturamos os dados
       // assim os dados do estado anterior permanecerão junto com os dados da Action passada
-      posts: [...state.posts, action.post],
+      posts: [...state.posts, action.payload],
     };
   } else if (action.type === "REMOVE_POST") {
     return {
@@ -49,4 +49,18 @@ const postReducer = (state = initialState, action) => {
 
 const store = createStore(postReducer);
 
-// 5- DISPATCH
+// 5- SUBISCRIBE
+store.subscribe(() => {
+  const data = store.getState()
+  console.log(data)
+})
+
+// 6- DISPATCH
+
+store.dispatch(
+  addPostAction({
+    id: 1,
+    title: "TESTANDO O REDUX",
+  })
+);
+// { posts: [ { id: 1, title: 'TESTANDO O REDUX' } ] }
