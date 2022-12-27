@@ -22,6 +22,7 @@ const addPostAction = (post) => {
 const removePostAction = (id) => {
   return {
     type: "REMOVE_POST",
+    id,
   };
 };
 
@@ -51,12 +52,13 @@ const store = createStore(postReducer);
 
 // 5- SUBISCRIBE
 store.subscribe(() => {
-  const data = store.getState()
-  console.log(data)
-})
+  const data = store.getState();
+  console.log(data);
+});
 
 // 6- DISPATCH
 
+// ADD POSTS
 store.dispatch(
   addPostAction({
     id: 1,
@@ -64,3 +66,26 @@ store.dispatch(
   })
 );
 // { posts: [ { id: 1, title: 'TESTANDO O REDUX' } ] }
+
+store.dispatch(
+  addPostAction({
+    id: 2,
+    title: "TESTANDO O REDUX-CORE",
+  })
+);
+/* {
+  posts: [
+    { id: 1, title: 'TESTANDO O REDUX' },
+    { id: 2, title: 'TESTANDO O REDUX-CORE' }
+  ]
+} */
+
+// REMOVE POSTS
+store.dispatch(removePostAction(2));
+/* {
+  posts: [
+    { id: 1, title: 'TESTANDO O REDUX' },    
+    { id: 2, title: 'TESTANDO O REDUX-CORE' }
+  ]
+}
+{ posts: [ { id: 1, title: 'TESTANDO O REDUX' } ] } */
