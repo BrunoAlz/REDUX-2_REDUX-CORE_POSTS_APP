@@ -9,9 +9,8 @@ const initialState = {
 };
 
 // 2- ACTIONS
-const ADD_POST = 'ADD_POST'
-const REMOVE_POST = 'REMOVE_POST'
-
+const ADD_POST = "ADD_POST";
+const REMOVE_POST = "REMOVE_POST";
 
 // ADD POSTS
 const addPostAction = (post) => {
@@ -32,21 +31,36 @@ const removePostAction = (id) => {
 // 3- REDUCERS
 
 const postReducer = (state = initialState, action) => {
-  if (action.type === ADD_POST) {
-    return {
-      // Pegamos o array de post que está no state e desestruturamos os dados
-      // assim os dados do estado anterior permanecerão junto com os dados da Action passada
-      posts: [...state.posts, action.payload],
-    };
-  } else if (action.type === REMOVE_POST) {
-    return {
-      posts: state.posts.filter((post) => {
-        return post.id !== action.id;
-      }),
-    };
-  } else {
-    return state;
+  switch (action.type) {
+    case ADD_POST:
+      return {
+        posts: [...state.posts, action.payload],
+      };
+    case REMOVE_POST:
+      return {
+        posts: state.posts.filter((post) => {
+          return post.id !== action.id;
+        }),
+      };
+    default:
+      return state;
   }
+
+  // if (action.type === ADD_POST) {
+  //   return {
+  //     // Pegamos o array de post que está no state e desestruturamos os dados
+  //     // assim os dados do estado anterior permanecerão junto com os dados da Action passada
+  //     posts: [...state.posts, action.payload],
+  //   };
+  // } else if (action.type === REMOVE_POST) {
+  //   return {
+  //     posts: state.posts.filter((post) => {
+  //       return post.id !== action.id;
+  //     }),
+  //   };
+  // } else {
+  //   return state;
+  // }
 };
 
 // 4- STORE
