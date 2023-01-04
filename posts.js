@@ -1,4 +1,4 @@
-const { createStore } = require("redux");
+const { createStore, combineReducers } = require("redux");
 
 // PASSOS:
 
@@ -8,15 +8,28 @@ const initialState = {
   posts: [],
 };
 
+const usersInitialState = {
+  users: [],
+};
+
 // 2- ACTIONS
 const ADD_POST = "ADD_POST";
 const REMOVE_POST = "REMOVE_POST";
+const ADD_USER = "ADD_USER";
 
 // ADD POSTS
 const addPostAction = (post) => {
   return {
     type: ADD_POST,
     payload: post,
+  };
+};
+
+// ADD USERS
+const addUserAction = (user) => {
+  return {
+    type: ADD_USER,
+    payload: user,
   };
 };
 
@@ -63,14 +76,32 @@ const postReducer = (state = initialState, action) => {
   // }
 };
 
+const userReducer = (state = usersInitialState, action) => {
+  switch (action.type) {
+    case ADD_USER:
+      return {
+        users: [...state.users, action.payload],
+      };
+    default:
+      return state;
+  }
+};
+
+// ROOT REDUCER
+const rootReducer = combineReducers({
+  posts: postReducer,
+  users: userReducer,
+});
+
 // 4- STORE
 
-const store = createStore(postReducer);
+const store = createStore(rootReducer);
 
 // 5- SUBISCRIBE
 store.subscribe(() => {
   const data = store.getState();
-  console.log(data);
+  console.log("posts", data.posts);
+  console.log("users", data.users);
 });
 
 // 6- DISPATCH
@@ -96,6 +127,14 @@ store.dispatch(
     { id: 2, title: 'TESTANDO O REDUX-CORE' }
   ]
 } */
+
+// ADD POSTS
+store.dispatch(
+  addUserAction({
+    name: "Bruno Alves",
+    email: "Bruno@gmail.com",
+  })
+);
 
 // REMOVE POSTS
 store.dispatch(removePostAction(2));
